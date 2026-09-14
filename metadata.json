@@ -1,0 +1,6 @@
+{
+  "name": "NEXORA — Creative Technology Studio",
+  "description": "Nexora combines design, artificial intelligence, motion and engineering to create digital products that feel alive.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
