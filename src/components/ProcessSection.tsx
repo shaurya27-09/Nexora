@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PROCESS_STEPS } from '../data/content';
 import { TransitionPanel } from './motion-primitives/TransitionPanel';
-import { Spotlight } from './motion-primitives/Spotlight';
 import { ArrowRight, CheckCircle2, Clock, Calendar, Sparkles } from 'lucide-react';
 
 export function ProcessSection() {
@@ -90,7 +89,7 @@ export function ProcessSection() {
         {/* Right Column: Deep Step Panel Inspector with TransitionPanel */}
         <div className="lg:col-span-7">
           <div className="relative rounded-3xl border border-zinc-800/90 bg-zinc-900/30 p-8 md:p-10 backdrop-blur-xl shadow-2xl overflow-hidden min-h-[440px]">
-            <Spotlight size={360} className="from-cyan-400/10 via-blue-500/5 to-transparent" />
+            <div className="pointer-events-none absolute -inset-px rounded-3xl bg-gradient-to-b from-cyan-500/5 via-transparent to-transparent opacity-60" />
 
             <TransitionPanel
               activeIndex={activeStepIndex}

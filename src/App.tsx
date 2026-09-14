@@ -16,16 +16,12 @@ import { FinalCTA } from './components/FinalCTA';
 import { Footer } from './components/Footer';
 import { FloatingNavDock } from './components/FloatingNavDock';
 import { ProjectInquiryModal } from './components/ProjectInquiryModal';
-import { CustomCursor } from './components/CustomCursor';
 
 export function App() {
   const [projectModalOpen, setProjectModalOpen] = useState(false);
 
   return (
     <div className="relative min-h-screen w-full bg-[#050608] text-zinc-100 selection:bg-cyan-500/30 selection:text-cyan-200 overflow-x-hidden font-sans">
-      {/* Desktop Contextual Custom Cursor */}
-      <CustomCursor />
-
       {/* Dynamic Scroll Progress Bar */}
       <ScrollProgress className="fixed top-0 left-0 right-0 z-50 h-[3px] bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500" />
 
@@ -43,7 +39,7 @@ export function App() {
         {/* 3. Selected Work (4 Editorial Case Studies with 3D Tilt, Category Filters & Morphing Dialog) */}
         <WorkSection />
 
-        {/* 4. Capabilities (6 High-Density Spotlight Cards) */}
+        {/* 4. Capabilities (6 High-Density Cards) */}
         <CapabilitiesSection />
 
         {/* 5. Statement Section (Scroll-Triggered Typography) */}

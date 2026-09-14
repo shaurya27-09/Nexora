@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { STATS } from '../data/content';
 import { AnimatedNumber } from './motion-primitives/AnimatedNumber';
-import { Spotlight } from './motion-primitives/Spotlight';
 import { BorderTrail } from './motion-primitives/BorderTrail';
 
 export function StatsSection() {
@@ -31,7 +30,7 @@ export function StatsSection() {
               key={stat.label}
               className="relative group rounded-2xl border border-zinc-800/90 bg-zinc-900/40 p-8 backdrop-blur-xl shadow-xl overflow-hidden text-center hover:border-zinc-700 hover:bg-zinc-900/60 transition-all duration-300"
             >
-              <Spotlight size={240} className="from-cyan-400/10 via-blue-500/5 to-transparent" />
+              <div className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-b from-cyan-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               {idx === 0 && (
                 <BorderTrail
                   size={70}

@@ -6,7 +6,6 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from './motion-primitives/Accordion';
-import { Spotlight } from './motion-primitives/Spotlight';
 import { Plus, Minus, HelpCircle, ArrowUpRight } from 'lucide-react';
 
 const FAQS = [
@@ -98,7 +97,7 @@ export function FAQSection({ onOpenProjectModal }: FAQSectionProps) {
           {/* Right Column: Accordion */}
           <div className="lg:col-span-7">
             <div className="relative rounded-3xl border border-zinc-800/90 bg-zinc-900/30 p-4 sm:p-8 backdrop-blur-xl shadow-2xl">
-              <Spotlight size={360} className="from-cyan-400/10 via-blue-500/5 to-transparent" />
+              <div className="pointer-events-none absolute -inset-px rounded-3xl bg-gradient-to-b from-cyan-500/5 via-transparent to-transparent opacity-60" />
 
               <Accordion
                 defaultValue="engagement-model"

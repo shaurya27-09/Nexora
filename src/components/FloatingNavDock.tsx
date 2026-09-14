@@ -14,7 +14,8 @@ export function FloatingNavDock({ onOpenProjectModal }: FloatingNavDockProps) {
   useEffect(() => {
     const handleScroll = () => {
       // Show dock after scrolling 300px
-      setVisible(window.scrollY > 300);
+      const isPast = window.scrollY > 300;
+      setVisible((prev) => (prev !== isPast ? isPast : prev));
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);

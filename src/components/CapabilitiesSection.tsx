@@ -1,8 +1,7 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { CAPABILITIES } from '../data/content';
-import { Spotlight } from './motion-primitives/Spotlight';
 import { BorderTrail } from './motion-primitives/BorderTrail';
 import { Compass, Palette, Cpu, Code2, Sparkles, Layers, ArrowRight, Check } from 'lucide-react';
 
@@ -16,8 +15,6 @@ const iconMap = {
 };
 
 export function CapabilitiesSection() {
-  const [activeCard, setActiveCard] = useState<string | null>(null);
-
   return (
     <section id="capabilities" className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#050608] border-t border-zinc-800/60">
       {/* Subtle Background Elements */}
@@ -55,11 +52,9 @@ export function CapabilitiesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              onMouseEnter={() => setActiveCard(cap.id)}
-              onMouseLeave={() => setActiveCard(null)}
               className="relative group rounded-2xl border border-zinc-800/90 bg-zinc-900/40 p-8 backdrop-blur-xl shadow-xl transition-all duration-300 hover:border-zinc-700 hover:bg-zinc-900/70 hover:shadow-cyan-500/5 overflow-hidden flex flex-col justify-between"
             >
-              <Spotlight size={280} className="from-cyan-400/10 via-blue-500/5 to-transparent" />
+              <div className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-b from-cyan-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               {isFeatured && (
                 <BorderTrail

@@ -54,11 +54,15 @@ export function Tilt({
   const transform = useMotionTemplate`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!window.matchMedia('(pointer: fine)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if (!ref.current) return;
 
     const rect = ref.current.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
+    if (width === 0 || height === 0) return;
+
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
 

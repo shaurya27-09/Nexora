@@ -6,7 +6,6 @@ import { TextShimmer } from './motion-primitives/TextShimmer';
 import { TextShimmerWave } from './motion-primitives/TextShimmerWave';
 import { TextLoop } from './motion-primitives/TextLoop';
 import { Magnetic } from './motion-primitives/Magnetic';
-import { Spotlight } from './motion-primitives/Spotlight';
 import { GlowEffect } from './motion-primitives/GlowEffect';
 import { BorderTrail } from './motion-primitives/BorderTrail';
 import { ArrowDown, ArrowRight, Sparkles, Play, Terminal } from 'lucide-react';
@@ -61,9 +60,6 @@ export function Hero({ onOpenProjectModal }: HeroProps) {
             WebkitMaskImage: 'radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 80%)',
           }}
         />
-
-        {/* Cursor-reactive spotlight within Hero */}
-        <Spotlight size={340} className="from-cyan-400/15 via-blue-500/5 to-transparent" />
       </div>
 
       {/* Main Content */}

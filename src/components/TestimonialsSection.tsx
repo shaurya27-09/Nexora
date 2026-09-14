@@ -8,7 +8,6 @@ import {
   CarouselNavigation,
   CarouselIndicator,
 } from './motion-primitives/Carousel';
-import { Spotlight } from './motion-primitives/Spotlight';
 import { Quote, Sparkles } from 'lucide-react';
 
 export function TestimonialsSection() {
@@ -29,13 +28,13 @@ export function TestimonialsSection() {
         </p>
       </div>
 
-      <div className="max-w-4xl mx-auto relative px-2 sm:px-6" data-cursor="DRAG">
+      <div className="max-w-4xl mx-auto relative px-2 sm:px-6">
         <Carousel className="w-full">
           <CarouselContent>
             {TESTIMONIALS.map((t, idx) => (
               <CarouselItem key={idx}>
                 <div className="relative rounded-3xl border border-zinc-800/90 bg-zinc-900/40 p-8 sm:p-12 md:p-14 backdrop-blur-xl shadow-2xl overflow-hidden mx-2">
-                  <Spotlight size={320} className="from-cyan-400/10 via-blue-500/5 to-transparent" />
+                  <div className="pointer-events-none absolute -inset-px rounded-3xl bg-gradient-to-b from-cyan-500/5 via-transparent to-transparent opacity-60" />
 
                   {/* Top Quote Icon */}
                   <div className="w-12 h-12 rounded-2xl bg-zinc-800/80 border border-zinc-700/80 flex items-center justify-center text-cyan-400 mb-6 sm:mb-8">

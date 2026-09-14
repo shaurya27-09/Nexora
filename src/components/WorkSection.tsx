@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import { PROJECTS } from '../data/content';
 import { Project } from '../types';
 import { Tilt } from './motion-primitives/Tilt';
-import { Spotlight } from './motion-primitives/Spotlight';
 import { BorderTrail } from './motion-primitives/BorderTrail';
 import { AnimatedBackground } from './motion-primitives/AnimatedBackground';
 import { TextScramble } from './motion-primitives/TextScramble';
@@ -395,13 +394,12 @@ export function WorkSection() {
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.5 }}
                 className="group"
-                data-cursor="EXPLORE"
                 onMouseEnter={() => setHoveredProjectId(project.id)}
                 onMouseLeave={() => setHoveredProjectId(null)}
               >
-                <Tilt rotationFactor={6} className="w-full">
+                <Tilt rotationFactor={4} className="w-full">
                   <div className="relative rounded-3xl border border-zinc-800/90 bg-zinc-900/30 backdrop-blur-xl p-6 md:p-10 shadow-2xl transition-all duration-500 hover:border-zinc-700 hover:bg-zinc-900/50">
-                    <Spotlight size={400} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="pointer-events-none absolute -inset-px rounded-3xl bg-gradient-to-b from-cyan-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                     <div
                       className={`grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center ${

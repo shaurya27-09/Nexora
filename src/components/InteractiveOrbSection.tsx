@@ -8,18 +8,17 @@ import { Sparkles, Radio, Activity, RefreshCw } from 'lucide-react';
 export function InteractiveOrbSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [orbMode, setOrbMode] = useState<'pulse' | 'breathe' | 'rotate' | 'colorShift'>('pulse');
-  const [isHovered, setIsHovered] = useState(false);
 
-  // Mouse reaction values
+  // Mouse reaction values for central orb
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const springConfig = { damping: 20, stiffness: 80 };
+  const springConfig = { damping: 25, stiffness: 90 };
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
 
-  const orbRotateX = useTransform(smoothY, [-200, 200], [15, -15]);
-  const orbRotateY = useTransform(smoothX, [-200, 200], [-15, 15]);
+  const orbRotateX = useTransform(smoothY, [-200, 200], [12, -12]);
+  const orbRotateY = useTransform(smoothX, [-200, 200], [-12, 12]);
 
   const floatingWords = [
     { text: 'DESIGN', angle: 0, distance: 180, color: 'text-cyan-300' },
@@ -31,6 +30,8 @@ export function InteractiveOrbSection() {
   ];
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Only calculate for fine pointers (desktop mouse)
+    if (!window.matchMedia('(pointer: fine)').matches) return;
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = e.clientX - (rect.left + rect.width / 2);
@@ -39,20 +40,9 @@ export function InteractiveOrbSection() {
     mouseY.set(y);
   };
 
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (!containerRef.current || !e.touches[0]) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const touch = e.touches[0];
-    const x = touch.clientX - (rect.left + rect.width / 2);
-    const y = touch.clientY - (rect.top + rect.height / 2);
-    mouseX.set(x);
-    mouseY.set(y);
-  };
-
   const handleMouseLeave = () => {
     mouseX.set(0);
     mouseY.set(0);
-    setIsHovered(false);
   };
 
   return (
@@ -60,15 +50,12 @@ export function InteractiveOrbSection() {
       id="interactive-core"
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      onTouchMove={handleTouchMove}
-      onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
-      data-cursor="ORBIT"
       className="relative w-full py-28 sm:py-36 px-4 sm:px-6 lg:px-8 bg-[#050608] border-t border-zinc-800/60 overflow-hidden flex flex-col items-center justify-center select-none"
     >
       {/* Background ambient lighting */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-cyan-500/5 blur-[120px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-cyan-500/5 blur-3xl opacity-40" />
       </div>
 
       {/* Header */}
@@ -81,7 +68,7 @@ export function InteractiveOrbSection() {
           The Living Core
         </h2>
         <p className="mt-3 text-sm sm:text-base text-zinc-400">
-          Interact with our neural synthesis engine. Hover, drag cursor, or toggle frequency states to reshape the dynamic energy field.
+          Interact with our neural synthesis engine. Explore frequency states to reshape the dynamic energy field in real time.
         </p>
       </div>
 
