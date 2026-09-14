@@ -39,6 +39,16 @@ export function InteractiveOrbSection() {
     mouseY.set(y);
   };
 
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!containerRef.current || !e.touches[0]) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const touch = e.touches[0];
+    const x = touch.clientX - (rect.left + rect.width / 2);
+    const y = touch.clientY - (rect.top + rect.height / 2);
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
   const handleMouseLeave = () => {
     mouseX.set(0);
     mouseY.set(0);
@@ -50,8 +60,10 @@ export function InteractiveOrbSection() {
       id="interactive-core"
       ref={containerRef}
       onMouseMove={handleMouseMove}
+      onTouchMove={handleTouchMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
+      data-cursor="ORBIT"
       className="relative w-full py-28 sm:py-36 px-4 sm:px-6 lg:px-8 bg-[#050608] border-t border-zinc-800/60 overflow-hidden flex flex-col items-center justify-center select-none"
     >
       {/* Background ambient lighting */}
@@ -163,7 +175,7 @@ export function InteractiveOrbSection() {
             key={mode}
             type="button"
             onClick={() => setOrbMode(mode)}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-mono transition-all cursor-pointer ${
+            className={`px-3.5 py-1.5 rounded-lg text-xs font-mono transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${
               orbMode === mode
                 ? 'bg-cyan-500/20 border border-cyan-500/60 text-cyan-300 shadow-md shadow-cyan-500/10'
                 : 'bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-zinc-200 hover:border-zinc-700'

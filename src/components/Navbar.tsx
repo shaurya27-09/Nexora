@@ -18,6 +18,7 @@ export function Navbar({ onOpenProjectModal }: NavbarProps) {
     { label: 'Capabilities', href: '#capabilities', id: 'capabilities' },
     { label: 'Process', href: '#process', id: 'process' },
     { label: 'Studio', href: '#interactive-core', id: 'studio' },
+    { label: 'FAQ', href: '#faq', id: 'faq' },
     { label: 'Contact', href: '#contact', id: 'contact' },
   ];
 

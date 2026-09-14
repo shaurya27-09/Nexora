@@ -115,8 +115,13 @@ export function Footer() {
                   </a>
                 </li>
                 <li>
+                  <a href="#faq" className="hover:text-cyan-400 transition-colors">
+                    [05] PARTNERSHIP FAQ
+                  </a>
+                </li>
+                <li>
                   <a href="#contact" className="hover:text-cyan-400 transition-colors">
-                    [05] CONTACT & BRIEF
+                    [06] CONTACT & BRIEF
                   </a>
                 </li>
               </ul>

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Dock, DockItem, DockIcon, DockLabel } from './motion-primitives/Dock';
-import { Sparkles, Layers, Cpu, Compass, Activity, Send, ArrowUp } from 'lucide-react';
+import { Sparkles, Layers, Cpu, Compass, Activity, Send, ArrowUp, HelpCircle } from 'lucide-react';
 
 export type FloatingNavDockProps = {
   onOpenProjectModal: () => void;
@@ -75,6 +75,13 @@ export function FloatingNavDock({ onOpenProjectModal }: FloatingNavDockProps) {
                 <DockLabel>Living Core</DockLabel>
                 <DockIcon>
                   <Activity size={16} className="text-teal-400" />
+                </DockIcon>
+              </DockItem>
+
+              <DockItem onClick={() => scrollTo('faq')} className="w-10 h-10 bg-zinc-900/90 border border-zinc-800">
+                <DockLabel>FAQ</DockLabel>
+                <DockIcon>
+                  <HelpCircle size={16} className="text-amber-400" />
                 </DockIcon>
               </DockItem>
 

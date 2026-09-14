@@ -71,6 +71,7 @@ export type AccordionProps = {
   transition?: Transition;
   variants?: { expanded: Variant; collapsed: Variant };
   expandedValue?: React.Key | null;
+  defaultValue?: React.Key | null;
   onValueChange?: (value: React.Key | null) => void;
 };
 
@@ -80,6 +81,7 @@ function Accordion({
   transition,
   variants,
   expandedValue,
+  defaultValue,
   onValueChange,
 }: AccordionProps) {
   return (
@@ -87,7 +89,7 @@ function Accordion({
       <div className={cn('relative', className)} aria-orientation='vertical'>
         <AccordionProvider
           variants={variants}
-          expandedValue={expandedValue}
+          expandedValue={expandedValue ?? defaultValue}
           onValueChange={onValueChange}
         >
           {children}
@@ -101,6 +103,7 @@ export type AccordionItemProps = {
   value: React.Key;
   children: ReactNode;
   className?: string;
+  key?: React.Key;
 };
 
 function AccordionItem({ value, children, className }: AccordionItemProps) {

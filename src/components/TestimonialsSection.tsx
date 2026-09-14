@@ -29,7 +29,7 @@ export function TestimonialsSection() {
         </p>
       </div>
 
-      <div className="max-w-4xl mx-auto relative px-2 sm:px-6">
+      <div className="max-w-4xl mx-auto relative px-2 sm:px-6" data-cursor="DRAG">
         <Carousel className="w-full">
           <CarouselContent>
             {TESTIMONIALS.map((t, idx) => (
